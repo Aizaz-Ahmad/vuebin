@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 const DAO = require('./dao');
 require('dotenv').config();
 
-console.log(process.env);
+console.log(process.env.CLIENT_URL);
 
 const PORT = process.env.PORT || 3000;
 
