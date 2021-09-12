@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --github-theme-background-color: #0d1117;
+  --code-font-size: 16px;
+  --code-font-family: consolas;
+  --vue-custom-tooltip-color: black;
+  --vue-custom-tooltip-background: #4fc08d;
+  --vue-custom-tooltip-border-radius: 50px;
+  --vue-custom-tooltip-font-weight: 500;
+}
+body {
+  background-color: var(--github-theme-background-color);
+}
+.d-flex {
+  display: flex;
+}
+.w-100 {
+  width: 100%;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.flex-column {
+  flex-direction: column;
+}
+.line-numbers {
+  color: rgb(225, 225, 225);
+  width: 35px;
+  font-family: var(--code-font-family);
+  font-size: var(--code-font-size);
+  line-height: 1.5;
+  text-align: right;
+  user-select: none;
+}
+.vue-custom-tooltip.is-underlined {
+  border: none;
+}
+.vue-custom-tooltip:after {
+  font-family: monospace;
+}
+.Vue-Toastification__container {
+  z-index: 10000;
+}
