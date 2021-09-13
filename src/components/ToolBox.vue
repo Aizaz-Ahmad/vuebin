@@ -36,6 +36,16 @@
             <img src="../assets/svg/edit_note.svg" alt="Edit File logo" /> </i
         ></VueCustomTooltip>
         <VueCustomTooltip
+          label="Prettify Code (Ctrl + P)"
+          position="is-left"
+          :active="!disablePrettifyOption"
+        >
+          <i
+            @click="$emit('share-twitter')"
+            :class="{ 'event-none': disablePrettifyOption }"
+            ><img src="../assets/svg/auto_fix.svg" alt="Pretiffy logo" /></i
+        ></VueCustomTooltip>
+        <VueCustomTooltip
           label="Share to Twitter (Ctrl + G)"
           position="is-left"
           :active="!disableTwitterOption"
@@ -56,7 +66,13 @@
 <script>
   import VueCustomTooltip from '@adamdehaven/vue-custom-tooltip';
   import { onMounted, onUnmounted } from 'vue';
-  const emits = ['new-file', 'save-file', 'share-twitter', 'duplicate-file'];
+  const emits = [
+    'new-file',
+    'save-file',
+    'share-twitter',
+    'duplicate-file',
+    'prettify-code',
+  ];
   export default {
     name: 'ToolBox',
     components: {
@@ -79,10 +95,14 @@
         default: false,
         type: Boolean,
       },
+      disablePrettifyOption: {
+        default: false,
+        type: Boolean,
+      },
     },
     emits,
     setup(props, { emit }) {
-      const emitKeys = ['KeyF', 'KeyS', 'KeyG', 'KeyD'];
+      const emitKeys = ['KeyF', 'KeyS', 'KeyG', 'KeyD', 'KeyP'];
       /**@param {KeyboardEvent} event */
       const bindEmits = event => {
         if (event.ctrlKey) {
@@ -151,7 +171,7 @@
     color: white;
   }
   .tool-items {
-    padding: 10px 30px;
+    padding: 10px;
     background-color: #298b5f;
     justify-content: space-between;
   }

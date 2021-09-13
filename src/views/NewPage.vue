@@ -28,7 +28,7 @@
       const toast = useToast();
       const $store = inject('$store');
       const code = ref($store.code);
-      const codeEditor = ref(null)
+      const codeEditor = ref(null);
 
       const saveCodeToDb = async () => {
         let slug = (
@@ -48,8 +48,8 @@
         });
       };
       const formatCode = () => {
-        codeEditor.value.formatCode()
-      }
+        codeEditor.value.formatCode();
+      };
       return {
         code,
         saveCodeToDb,
