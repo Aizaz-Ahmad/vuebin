@@ -1,10 +1,12 @@
 <template>
   <ToolBox
-    @save-file="formatCode"
+    @save-file="saveCodeToDb"
     @new-file="code = ''"
+    @prettify-code="formatCode"
     :disableDuplicateOption="true"
     :disableTwitterOption="true"
     :disableSaveOption="!code.length"
+    :disablePrettifyOption="!code.length"
   />
   <code-editor v-model:code="code" ref="codeEditor"></code-editor>
 </template>
@@ -22,7 +24,6 @@
       CodeEditor,
       ToolBox,
     },
-    emits: ['disable-save-option'],
     setup() {
       const router = useRouter();
       const toast = useToast();

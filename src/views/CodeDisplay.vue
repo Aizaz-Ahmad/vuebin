@@ -4,6 +4,7 @@
     @duplicate-file="duplicateFile"
     @share-twitter="shareTwitter"
     :disableSaveOption="true"
+    :disablePrettifyOption="true"
   />
   <code-editor v-if="code" v-model:code="code" :editable="false"></code-editor>
 </template>
