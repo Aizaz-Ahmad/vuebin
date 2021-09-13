@@ -4,10 +4,9 @@ import router from './router';
 import store from './store';
 import VueLoading from 'vue-loading-overlay';
 import Toast from 'vue-toastification';
-// Import the CSS or use your own!
+//importing css
 import 'vue-toastification/dist/index.css';
 import '@/assets/css/style.css';
-import '@fortawesome/fontawesome-free/css/all.css';
 import 'vue-loading-overlay/dist/vue-loading.css';
 
 const app = createApp(App);

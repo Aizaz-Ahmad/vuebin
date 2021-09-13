@@ -6,50 +6,47 @@
         <VueCustomTooltip
           label="Save (Ctrl + S)"
           position="is-bottom"
-          abbreviation
           :active="!disableSaveOption"
         >
           <i
-            class="far fa-save"
             @click="$emit('save-file')"
             :class="{ 'event-none': disableSaveOption }"
-          ></i
+          >
+            <img src="../assets/svg/save.svg" alt="save logo" /></i
         ></VueCustomTooltip>
         <VueCustomTooltip
           label="New (Ctrl + F)"
           position="is-bottom"
-          abbreviation
           :active="!disableNewOption"
         >
           <i
-            class="far fa-file-code"
             @click="$emit('new-file')"
             :class="{ 'event-none': disableNewOption }"
-          ></i
+            ><img src="../assets/svg/post_add.svg" alt="New File logo" /></i
         ></VueCustomTooltip>
         <VueCustomTooltip
           label="Duplicate and Edit (Ctrl + D)"
           position="is-left"
-          abbreviation
           :active="!disableDuplicateOption"
         >
           <i
-            class="far fa-copy"
             @click="$emit('duplicate-file')"
             :class="{ 'event-none': disableDuplicateOption }"
-          ></i
+          >
+            <img src="../assets/svg/edit_note.svg" alt="Edit File logo" /> </i
         ></VueCustomTooltip>
         <VueCustomTooltip
           label="Share to Twitter (Ctrl + G)"
           position="is-left"
-          abbreviation
           :active="!disableTwitterOption"
         >
           <i
-            class="fab fa-twitter"
             @click="$emit('share-twitter')"
             :class="{ 'event-none': disableTwitterOption }"
-          ></i
+            ><img
+              src="../assets/svg/twitter.svg"
+              alt="twitter logo"
+              width="24" /></i
         ></VueCustomTooltip>
       </div>
     </div>
@@ -106,9 +103,13 @@
 </script>
 
 <style scoped>
+  abbr {
+    cursor: pointer;
+  }
   .event-none {
     pointer-events: none;
-    color: rgba(255, 255, 255, 0.426);
+    /* color: rgba(255, 255, 255, 0.426); */
+    opacity: 0.5;
   }
   .tool-box {
     width: 200px;
@@ -120,7 +121,8 @@
     border-radius: 0px 0px 5px 5px;
   }
 
-  i {
+  img {
+    fill: white;
     color: rgba(255, 255, 255, 0.836);
     font-size: 20px;
     cursor: pointer;
