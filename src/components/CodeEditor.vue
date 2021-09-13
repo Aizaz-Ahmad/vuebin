@@ -7,7 +7,7 @@
         >{{ lineNumber }}</span
       >
     </div>
-    <div class="relative" style="width:calc(100% - 35px)">
+    <div class="relative" style="width: calc(100% - 35px)">
       <div
         class="absolute editor-common-style"
         id="highlighted-code"
@@ -35,6 +35,7 @@
 <script>
   import { ref, onMounted, watch, toRefs, inject } from 'vue';
   import shiki from '../plugins/shiki';
+  import usePrettier from '../composables/usePrettier';
   const tabOverride = require('taboverride');
 
   function useLineNumbers(code) {
@@ -71,10 +72,7 @@
   function setupEditor(emit) {
     const textarea = ref(null);
     onMounted(() => {
-      tabOverride
-        .tabSize(4)
-        .autoIndent(true)
-        .set(textarea.value);
+      tabOverride.tabSize(4).autoIndent(true).set(textarea.value);
     });
     const updateCode = () => {
       emit('update:code', textarea.value.value);
@@ -107,12 +105,14 @@
       const { lineNumbers } = useLineNumbers(code);
       const { highlightedCodeDiv } = useShikiWithCode(code);
       const { textarea, preventBlur, updateCode } = setupEditor(emit);
+      const { formatCode } = usePrettier(textarea, code, emit);
       return {
         lineNumbers,
         textarea,
         preventBlur,
         updateCode,
         highlightedCodeDiv,
+        formatCode,
       };
     },
   };

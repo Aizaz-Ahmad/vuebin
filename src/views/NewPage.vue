@@ -1,12 +1,12 @@
 <template>
   <ToolBox
-    @save-file="saveCodeToDb"
+    @save-file="formatCode"
     @new-file="code = ''"
     :disableDuplicateOption="true"
     :disableTwitterOption="true"
     :disableSaveOption="!code.length"
   />
-  <code-editor v-model:code="code"></code-editor>
+  <code-editor v-model:code="code" ref="codeEditor"></code-editor>
 </template>
 
 <script>
@@ -28,6 +28,7 @@
       const toast = useToast();
       const $store = inject('$store');
       const code = ref($store.code);
+      const codeEditor = ref(null)
 
       const saveCodeToDb = async () => {
         let slug = (
@@ -46,10 +47,14 @@
           },
         });
       };
-
+      const formatCode = () => {
+        codeEditor.value.formatCode()
+      }
       return {
         code,
         saveCodeToDb,
+        codeEditor,
+        formatCode,
       };
     },
   };

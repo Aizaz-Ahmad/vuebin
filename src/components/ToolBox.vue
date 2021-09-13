@@ -150,7 +150,7 @@
   }
   .tool-items {
     padding: 10px 30px;
-    background-color: #4fc08d52;
+    background-color: #298b5f;
     justify-content: space-between;
   }
 </style>
