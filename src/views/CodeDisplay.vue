@@ -28,9 +28,11 @@
       const router = useRouter();
       const { slug } = route.params;
       const $store = inject('$store');
+      const $loading = inject('$loading');
       const toast = useToast();
 
       onMounted(async () => {
+        const loader = $loading.show();
         try {
           code.value = (
             await axios.get(`${process.env.VUE_APP_API_URL}code/${slug}`)
@@ -39,6 +41,7 @@
           toast.error('Invalid Url, Code does not exist');
           router.push({ name: 'new' });
         }
+        loader.hide();
       });
 
       const duplicateFile = () => {

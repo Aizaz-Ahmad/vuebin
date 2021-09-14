@@ -28,6 +28,7 @@
       const router = useRouter();
       const toast = useToast();
       const $store = inject('$store');
+      const $loading = inject('$loading');
       const code = ref($store.code);
       const codeEditor = ref(null);
 
@@ -36,6 +37,7 @@
       };
 
       const saveCodeToDb = async () => {
+        const loading = $loading.show();
         formatCode();
         let slug = (
           await axios.post(`${process.env.VUE_APP_API_URL}new`, {
@@ -46,6 +48,7 @@
           `${window.location.origin}/code/${slug}`
         );
         toast.success('Code Saved, Url Copied to Clipboard');
+        loading.hide();
         router.push({
           name: 'code',
           params: {
