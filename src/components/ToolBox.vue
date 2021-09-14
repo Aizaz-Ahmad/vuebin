@@ -147,6 +147,9 @@
     font-size: 20px;
     cursor: pointer;
   }
+  i {
+    user-select: none;
+  }
   i:hover {
     transition: color 0.2s linear;
     color: white;
