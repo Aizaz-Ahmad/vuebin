@@ -31,7 +31,12 @@
       const code = ref($store.code);
       const codeEditor = ref(null);
 
+      const formatCode = () => {
+        codeEditor.value.formatCode();
+      };
+
       const saveCodeToDb = async () => {
+        formatCode();
         let slug = (
           await axios.post(`${process.env.VUE_APP_API_URL}new`, {
             code: code.value,
@@ -48,9 +53,7 @@
           },
         });
       };
-      const formatCode = () => {
-        codeEditor.value.formatCode();
-      };
+
       return {
         code,
         saveCodeToDb,
