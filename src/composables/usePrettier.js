@@ -3,9 +3,10 @@ import parserHTML from 'prettier/parser-html';
 import parserBABEL from 'prettier/parser-babel';
 import parserPOSTCSS from 'prettier/parser-postcss';
 import parserTypescript from 'prettier/parser-typescript';
-function usePrettier(textarea, code, emit) {
-  const formatCode = () => {
-    const formattedCode = prettier.format(code.value, {
+
+function usePrettier(cursorOffset, code) {
+  const formattedCodeWithCursorOffset = () => {
+    const formattedCode = prettier.formatWithCursor(code.value, {
       parser: 'vue',
       plugins: [parserHTML, parserBABEL, parserPOSTCSS, parserTypescript],
       arrowParens: 'avoid',
@@ -13,11 +14,12 @@ function usePrettier(textarea, code, emit) {
       singleQuote: true,
       useTabs: false,
       vueIndentScriptAndStyle: true,
+      cursorOffset,
     });
-    emit('update:code', formattedCode);
+    return formattedCode;
   };
   return {
-    formatCode,
+    formattedCodeWithCursorOffset,
   };
 }
 

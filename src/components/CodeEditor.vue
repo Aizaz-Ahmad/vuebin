@@ -35,7 +35,7 @@
 <script>
   import { ref, onMounted, watch, toRefs, inject } from 'vue';
   import shiki from '../plugins/shiki';
-  import usePrettier from '../composables/usePrettier';
+  import useFormatCode from '../composables/useFormatCode';
   const tabOverride = require('taboverride');
 
   function useLineNumbers(code) {
@@ -105,7 +105,8 @@
       const { lineNumbers } = useLineNumbers(code);
       const { highlightedCodeDiv } = useShikiWithCode(code);
       const { textarea, preventBlur, updateCode } = setupEditor(emit);
-      const { formatCode } = usePrettier(textarea, code, emit);
+      const { formatCode } = useFormatCode(textarea, code, emit);
+
       return {
         lineNumbers,
         textarea,
