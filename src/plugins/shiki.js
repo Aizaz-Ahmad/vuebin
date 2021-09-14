@@ -5,7 +5,10 @@ export default {
     shiki.setCDN('https://unpkg.com/shiki/');
     let highlighter = await shiki.getHighlighter({
       theme: 'github-dark',
-      langs: ['vue', 'js', 'vue-html', 'css', 'typescript'],
+      langs: [
+        'vue',
+        ...shiki.BUNDLED_LANGUAGES.find(a => a.id === 'vue').embeddedLangs,
+      ],
     });
     return highlighter;
   },
