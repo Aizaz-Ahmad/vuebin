@@ -1,6 +1,6 @@
 <template>
   <ToolBox
-    @new-file="$router.push('/new')"
+    @new-file="newFile"
     @duplicate-file="duplicateFile"
     @share-twitter="shareTwitter"
     :disableSaveOption="true"
@@ -46,6 +46,10 @@
         router.push({ name: 'new' });
       };
 
+      const newFile = () => {
+        $store.code = '';
+        router.push({ name: 'new' });
+      };
       const shareTwitter = () => {
         window.open(
           'https://twitter.com/share?url=' + encodeURI(window.location.href)
@@ -55,6 +59,7 @@
         code,
         duplicateFile,
         shareTwitter,
+        newFile,
       };
     },
   };
