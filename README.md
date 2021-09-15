@@ -6,5 +6,3 @@ VueBin is a pastebin for Vue.js Single File Components inspired by [HasteBin](ht
 [https://vue-bin.netlify.app/](https://vue-bin.netlify.app/)
 
 <br />
-
-![Demo Image](./demo.png)
