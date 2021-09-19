@@ -1,12 +1,7 @@
-import { reactive } from 'vue';
+import { createMiniStore } from 'vuex-ultramini';
 
-const store = reactive({
+const store = createMiniStore({
   code: '',
 });
 
-export default {
-  install(app) {
-    app.config.globalProperties.$store = store;
-    app.provide('$store', store);
-  },
-};
+export default store;
