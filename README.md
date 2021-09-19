@@ -2,6 +2,8 @@
 # VueBin
 VueBin is a pastebin for Vue.js Single File Components inspired by [HasteBin](https://hastebin.com/) with Out of the box Syntax Highlighting using [Shiki](https://shiki.matsu.io/) and Code Formatting using [Prettier](https://prettier.io/). You can easily share your Vue.js SFC Code with your teammates or client by just simply sharing a simple link. It is developed using MEVN stack.
 
+The Application is in Testing Phase and requires Performance and Security Improvements.
+
 ## Website link
 
 [https://vue-bin.netlify.app/](https://vue-bin.netlify.app/)
